@@ -1,0 +1,48 @@
+﻿@model IEnumerable<AspNetImageGallery.DAL.Entity.ImageModel>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+
+            <div class="col-sm-4">
+
+                <div class="card" style="width: 18rem;">
+                    <div class="card-header">
+                        <p class="card-text">@item.ImageCaption</p>
+                    </div>
+
+                    <img src="@item.ImagePath" class="rounded" alt="@item.ImageName">
+
+                    <div class="card-footer text-muted">
+
+                        <a asp-action="Edit" asp-route-ImageId="@item.ImageId" class="btn btn-primary btn-sm"> Edit</a>
+                        <a asp-action="Delete" asp-route-ImageId="@item.ImageId" onclick="return confirm('Are you sure to delete?')" class="btn btn-primary btn-sm"> Delete</a>
+
+                        @*@Html.ActionLink("Edit", "Edit", new { @class = "btn btn-secondary btn-sm" }, new { id = item.ImageId })
+
+                        @Html.ActionLink("Delete", "Delete", new { @class = "btn btn-secondary btn-sm" }, new { id = item.ImageId })*@
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        }
+
+
+    </div>
+</div>
